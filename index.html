@@ -1,0 +1,852 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EduPortal — Student Registration System</title>
+
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+
+ 
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" />
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<!-- ============================================================
+     CUSTOM CURSOR
+     ============================================================ -->
+<div class="custom-cursor" id="cursor"></div>
+<div class="custom-cursor-dot" id="cursor-dot"></div>
+
+<!-- ============================================================
+     LOADING SCREEN
+     ============================================================ -->
+<div id="loading-screen">
+  <div class="loader-content">
+    <div class="loader-logo">
+      <i class="fas fa-graduation-cap"></i>
+    </div>
+    <div class="loader-text">EduPortal</div>
+    <div class="loader-bar"><div class="loader-progress"></div></div>
+    <p class="loader-sub">Loading your experience...</p>
+  </div>
+</div>
+
+<!-- ============================================================
+     SCROLL PROGRESS BAR
+     ============================================================ -->
+<div id="scroll-progress-bar"></div>
+
+<!-- ============================================================
+     TOAST NOTIFICATION CONTAINER
+     ============================================================ -->
+<div id="toast-container" aria-live="polite" aria-atomic="true"></div>
+
+<!-- ============================================================
+     NAVBAR
+     ============================================================ -->
+<nav class="navbar navbar-expand-lg fixed-top" id="mainNavbar">
+  <div class="container">
+    <!-- Brand -->
+    <a class="navbar-brand" href="#home">
+      <i class="fas fa-graduation-cap me-2"></i>Edu<span>Portal</span>
+    </a>
+
+    <!-- Mobile Hamburger -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+      data-bs-target="#navbarContent" aria-controls="navbarContent"
+      aria-expanded="false" aria-label="Toggle navigation">
+      <span class="hamburger-icon"><i class="fas fa-bars"></i></span>
+    </button>
+
+    <!-- Nav Links -->
+    <div class="collapse navbar-collapse" id="navbarContent">
+      <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" href="#home">
+            <i class="fas fa-home me-1"></i>Home
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#courses">
+            <i class="fas fa-book me-1"></i>Courses
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#registration">
+            <i class="fas fa-pen me-1"></i>Registration
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#records">
+            <i class="fas fa-user-graduate me-1"></i>Student Records
+          </a>
+        </li>
+      </ul>
+
+      <!-- Theme Toggle & CTA -->
+      <div class="d-flex align-items-center gap-3">
+        <button id="theme-toggle" class="btn btn-theme-toggle" aria-label="Toggle Theme">
+          <i class="fas fa-moon" id="theme-icon"></i>
+        </button>
+        <a href="#registration" class="btn btn-nav-cta">
+          <i class="fas fa-rocket me-1"></i>Get Started
+        </a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- ============================================================
+     HERO SECTION
+     ============================================================ -->
+<section id="home" class="hero-section">
+  <!-- Floating Background Shapes -->
+  <div class="hero-shapes">
+    <div class="shape shape-1"></div>
+    <div class="shape shape-2"></div>
+    <div class="shape shape-3"></div>
+    <div class="shape shape-4"></div>
+    <div class="shape shape-5"></div>
+  </div>
+
+  <div class="container h-100">
+    <div class="row align-items-center h-100 min-vh-100">
+
+      <!-- Hero Text -->
+      <div class="col-lg-6 hero-text-col">
+        <div class="hero-badge" id="hero-badge">
+          <i class="fas fa-star me-2"></i>Premium Learning Platform
+        </div>
+        <h1 class="hero-heading" id="hero-heading">
+          Unlock Your <span class="gradient-text" id="typed-text"></span>
+          <br/>Future Today
+        </h1>
+        <p class="hero-sub" id="hero-sub">
+          Join thousands of students on EduPortal — the most modern, intuitive
+          student registration and learning management system built for the digital age.
+        </p>
+        <div class="hero-btns" id="hero-btns">
+          <a href="#registration" class="btn btn-hero-primary ripple-btn">
+            <i class="fas fa-rocket me-2"></i>Register Now
+          </a>
+          <a href="#courses" class="btn btn-hero-secondary">
+            <i class="fas fa-play-circle me-2"></i>Explore Courses
+          </a>
+        </div>
+        <!-- Stats Row -->
+        <div class="hero-stats" id="hero-stats">
+          <div class="stat-item">
+            <span class="stat-number" data-target="1200">0</span><span>+</span>
+            <span class="stat-label">Students</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat-item">
+            <span class="stat-number" data-target="15">0</span><span>+</span>
+            <span class="stat-label">Courses</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat-item">
+            <span class="stat-number" data-target="98">0</span><span>%</span>
+            <span class="stat-label">Success Rate</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Hero Illustration -->
+      <div class="col-lg-6 hero-img-col" id="hero-img-col">
+        <div class="hero-illustration">
+          <div class="hero-card-floating card-float-1">
+            <i class="fas fa-code"></i>
+            <span>HTML &amp; CSS</span>
+          </div>
+          <div class="hero-card-floating card-float-2">
+            <i class="fab fa-js"></i>
+            <span>JavaScript</span>
+          </div>
+          <div class="hero-card-floating card-float-3">
+            <i class="fas fa-check-circle text-success"></i>
+            <span>Enrolled!</span>
+          </div>
+          <div class="hero-central-circle">
+            <i class="fas fa-graduation-cap"></i>
+            <div class="orbit orbit-1"><span class="orbit-dot"></span></div>
+            <div class="orbit orbit-2"><span class="orbit-dot"></span></div>
+            <div class="orbit orbit-3"><span class="orbit-dot"></span></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     ANIMATED STATISTICS SECTION
+     ============================================================ -->
+<section id="stats-section" class="stats-section reveal-section">
+  <div class="container">
+    <div class="row g-4 justify-content-center">
+      <div class="col-6 col-md-3">
+        <div class="stats-card glass-card text-center">
+          <div class="stats-icon"><i class="fas fa-users"></i></div>
+          <div class="stats-num" data-target="1250">0</div>
+          <div class="stats-label">Active Students</div>
+        </div>
+      </div>
+      <div class="col-6 col-md-3">
+        <div class="stats-card glass-card text-center">
+          <div class="stats-icon"><i class="fas fa-book-open"></i></div>
+          <div class="stats-num" data-target="15">0</div>
+          <div class="stats-label">Courses Available</div>
+        </div>
+      </div>
+      <div class="col-6 col-md-3">
+        <div class="stats-card glass-card text-center">
+          <div class="stats-icon"><i class="fas fa-trophy"></i></div>
+          <div class="stats-num" data-target="342">0</div>
+          <div class="stats-label">Graduates</div>
+        </div>
+      </div>
+      <div class="col-6 col-md-3">
+        <div class="stats-card glass-card text-center">
+          <div class="stats-icon"><i class="fas fa-star"></i></div>
+          <div class="stats-num" data-target="98">0</div>
+          <div class="stats-label">% Satisfaction</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     COURSES SECTION
+     ============================================================ -->
+<section id="courses" class="courses-section reveal-section">
+  <div class="container">
+    <!-- Section Header -->
+    <div class="section-header text-center">
+      <span class="section-badge"><i class="fas fa-book me-2"></i>Our Courses</span>
+      <h2 class="section-title">Master <span class="gradient-text">Modern Web</span> Development</h2>
+      <p class="section-sub">Handpicked courses designed by industry experts to fast-track your career</p>
+    </div>
+
+    <div class="row g-4 mt-2 justify-content-center">
+
+      <!-- Course Card 1: HTML & CSS -->
+      <div class="col-lg-4 col-md-6">
+        <div class="course-card glass-card">
+          <div class="course-card-header html-css-gradient">
+            <i class="fab fa-html5 course-icon"></i>
+            <div class="course-badge-overlay">Beginner</div>
+          </div>
+          <div class="course-card-body">
+            <h4 class="course-title"><i class="fas fa-code me-2"></i>HTML &amp; CSS</h4>
+            <p class="course-desc">
+              Build beautiful, responsive websites from scratch. Master HTML5 semantics,
+              CSS3 animations, Flexbox, Grid, and modern design principles.
+            </p>
+            <div class="course-meta">
+              <span><i class="fas fa-clock me-1"></i>8 Weeks</span>
+              <span><i class="fas fa-signal me-1"></i>Beginner</span>
+              <span><i class="fas fa-users me-1"></i>420 Students</span>
+            </div>
+            <div class="course-more" style="display:none;">
+              <hr class="course-divider" />
+              <p>You'll learn:</p>
+              <ul class="course-details-list">
+                <li><i class="fas fa-check me-2"></i>Semantic HTML5 Structure</li>
+                <li><i class="fas fa-check me-2"></i>CSS3 Animations &amp; Transitions</li>
+                <li><i class="fas fa-check me-2"></i>Responsive Flexbox &amp; Grid</li>
+                <li><i class="fas fa-check me-2"></i>Bootstrap 5 Framework</li>
+                <li><i class="fas fa-check me-2"></i>CSS Variables &amp; Custom Properties</li>
+              </ul>
+            </div>
+            <div class="course-actions">
+              <button class="btn btn-read-more read-more-btn" data-target="course-more-1">
+                <i class="fas fa-chevron-down me-1 toggle-icon"></i>Read More
+              </button>
+              <a href="#registration" class="btn btn-enroll">
+                <i class="fas fa-rocket me-1"></i>Enroll
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Course Card 2: JavaScript -->
+      <div class="col-lg-4 col-md-6">
+        <div class="course-card glass-card featured-course">
+          <div class="featured-ribbon">Popular</div>
+          <div class="course-card-header js-gradient">
+            <i class="fab fa-js course-icon"></i>
+            <div class="course-badge-overlay">Intermediate</div>
+          </div>
+          <div class="course-card-body">
+            <h4 class="course-title"><i class="fab fa-js me-2"></i>JavaScript</h4>
+            <p class="course-desc">
+              Dive deep into ES6+, DOM manipulation, async programming, APIs, and
+              modern JavaScript patterns used by top companies worldwide.
+            </p>
+            <div class="course-meta">
+              <span><i class="fas fa-clock me-1"></i>12 Weeks</span>
+              <span><i class="fas fa-signal me-1"></i>Intermediate</span>
+              <span><i class="fas fa-users me-1"></i>380 Students</span>
+            </div>
+            <div class="course-more" style="display:none;">
+              <hr class="course-divider" />
+              <p>You'll learn:</p>
+              <ul class="course-details-list">
+                <li><i class="fas fa-check me-2"></i>ES6+ Modern Syntax</li>
+                <li><i class="fas fa-check me-2"></i>DOM Manipulation &amp; Events</li>
+                <li><i class="fas fa-check me-2"></i>Promises &amp; Async/Await</li>
+                <li><i class="fas fa-check me-2"></i>REST API Integration</li>
+                <li><i class="fas fa-check me-2"></i>OOP &amp; Design Patterns</li>
+              </ul>
+            </div>
+            <div class="course-actions">
+              <button class="btn btn-read-more read-more-btn" data-target="course-more-2">
+                <i class="fas fa-chevron-down me-1 toggle-icon"></i>Read More
+              </button>
+              <a href="#registration" class="btn btn-enroll">
+                <i class="fas fa-rocket me-1"></i>Enroll
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Course Card 3: jQuery -->
+      <div class="col-lg-4 col-md-6">
+        <div class="course-card glass-card">
+          <div class="course-card-header jquery-gradient">
+            <i class="fas fa-layer-group course-icon"></i>
+            <div class="course-badge-overlay">Intermediate</div>
+          </div>
+          <div class="course-card-body">
+            <h4 class="course-title"><i class="fas fa-layer-group me-2"></i>jQuery</h4>
+            <p class="course-desc">
+              Master jQuery for rapid DOM manipulation, AJAX calls, animations,
+              plugins, and event-driven programming patterns.
+            </p>
+            <div class="course-meta">
+              <span><i class="fas fa-clock me-1"></i>6 Weeks</span>
+              <span><i class="fas fa-signal me-1"></i>Intermediate</span>
+              <span><i class="fas fa-users me-1"></i>290 Students</span>
+            </div>
+            <div class="course-more" style="display:none;">
+              <hr class="course-divider" />
+              <p>You'll learn:</p>
+              <ul class="course-details-list">
+                <li><i class="fas fa-check me-2"></i>jQuery Selectors &amp; Traversal</li>
+                <li><i class="fas fa-check me-2"></i>Event Handling &amp; Delegation</li>
+                <li><i class="fas fa-check me-2"></i>AJAX &amp; JSON</li>
+                <li><i class="fas fa-check me-2"></i>jQuery Animations</li>
+                <li><i class="fas fa-check me-2"></i>Plugin Development</li>
+              </ul>
+            </div>
+            <div class="course-actions">
+              <button class="btn btn-read-more read-more-btn" data-target="course-more-3">
+                <i class="fas fa-chevron-down me-1 toggle-icon"></i>Read More
+              </button>
+              <a href="#registration" class="btn btn-enroll">
+                <i class="fas fa-rocket me-1"></i>Enroll
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     REGISTRATION SECTION
+     ============================================================ -->
+<section id="registration" class="registration-section reveal-section">
+  <div class="container">
+    <!-- Section Header -->
+    <div class="section-header text-center">
+      <span class="section-badge"><i class="fas fa-pen me-2"></i>Registration</span>
+      <h2 class="section-title">Start Your <span class="gradient-text">Journey</span></h2>
+      <p class="section-sub">Fill in your details below to join our learning community</p>
+    </div>
+
+    <div class="row justify-content-center mt-4">
+      <div class="col-xl-8 col-lg-10">
+        <div class="registration-card glass-card">
+
+          <!-- Form Header -->
+          <div class="reg-form-header">
+            <div class="reg-avatar-wrapper">
+              <div class="reg-avatar" id="avatarPreview">
+                <i class="fas fa-user" id="avatarIcon"></i>
+                <img src="" id="avatarImg" alt="Profile Preview" style="display:none;" />
+              </div>
+              <label for="profilePic" class="avatar-upload-btn" title="Upload Photo">
+                <i class="fas fa-camera"></i>
+              </label>
+              <input type="file" id="profilePic" accept="image/*" class="d-none" />
+            </div>
+            <div>
+              <h4 class="reg-form-title">Student Registration</h4>
+              <p class="reg-form-sub">All fields marked * are required</p>
+            </div>
+          </div>
+
+          <form id="registrationForm" novalidate>
+            <div class="row g-3">
+
+              <!-- Full Name -->
+              <div class="col-md-6">
+                <div class="form-group-modern">
+                  <label for="fullName" class="form-label-modern">
+                    <i class="fas fa-user me-2"></i>Full Name <span class="required">*</span>
+                  </label>
+                  <div class="input-wrapper">
+                    <input type="text" id="fullName" name="fullName"
+                      class="form-control form-input-modern" placeholder="Enter your full name" />
+                    <span class="input-icon"><i class="fas fa-user"></i></span>
+                    <span class="validation-icon"></span>
+                  </div>
+                  <div class="feedback-msg" id="fullName-feedback"></div>
+                </div>
+              </div>
+
+              <!-- Email -->
+              <div class="col-md-6">
+                <div class="form-group-modern">
+                  <label for="email" class="form-label-modern">
+                    <i class="fas fa-envelope me-2"></i>Email Address <span class="required">*</span>
+                  </label>
+                  <div class="input-wrapper">
+                    <input type="email" id="email" name="email"
+                      class="form-control form-input-modern" placeholder="you@example.com" />
+                    <span class="input-icon"><i class="fas fa-envelope"></i></span>
+                    <span class="validation-icon"></span>
+                  </div>
+                  <div class="feedback-msg" id="email-feedback"></div>
+                </div>
+              </div>
+
+              <!-- Phone -->
+              <div class="col-md-6">
+                <div class="form-group-modern">
+                  <label for="phone" class="form-label-modern">
+                    <i class="fas fa-phone me-2"></i>Phone Number <span class="required">*</span>
+                  </label>
+                  <div class="input-wrapper">
+                    <input type="tel" id="phone" name="phone"
+                      class="form-control form-input-modern" placeholder="03XXXXXXXXX (11 digits)" />
+                    <span class="input-icon"><i class="fas fa-phone"></i></span>
+                    <span class="validation-icon"></span>
+                  </div>
+                  <div class="feedback-msg" id="phone-feedback"></div>
+                </div>
+              </div>
+
+              <!-- Date of Birth -->
+              <div class="col-md-6">
+                <div class="form-group-modern">
+                  <label for="dob" class="form-label-modern">
+                    <i class="fas fa-calendar me-2"></i>Date of Birth <span class="required">*</span>
+                  </label>
+                  <div class="input-wrapper">
+                    <input type="date" id="dob" name="dob"
+                      class="form-control form-input-modern" />
+                    <span class="input-icon"><i class="fas fa-calendar"></i></span>
+                    <span class="validation-icon"></span>
+                  </div>
+                  <div class="feedback-msg" id="dob-feedback"></div>
+                </div>
+              </div>
+
+              <!-- Password -->
+              <div class="col-md-6">
+                <div class="form-group-modern">
+                  <label for="password" class="form-label-modern">
+                    <i class="fas fa-lock me-2"></i>Password <span class="required">*</span>
+                  </label>
+                  <div class="input-wrapper">
+                    <input type="password" id="password" name="password"
+                      class="form-control form-input-modern" placeholder="Minimum 8 characters" />
+                    <span class="input-icon"><i class="fas fa-lock"></i></span>
+                    <button type="button" class="toggle-password" data-target="password">
+                      <i class="fas fa-eye"></i>
+                    </button>
+                    <span class="validation-icon"></span>
+                  </div>
+                  <!-- Password Strength Meter -->
+                  <div class="strength-meter mt-2" id="strength-meter">
+                    <div class="strength-bar">
+                      <div class="strength-fill" id="strength-fill"></div>
+                    </div>
+                    <span class="strength-label" id="strength-label">Strength</span>
+                  </div>
+                  <div class="feedback-msg" id="password-feedback"></div>
+                </div>
+              </div>
+
+              <!-- Confirm Password -->
+              <div class="col-md-6">
+                <div class="form-group-modern">
+                  <label for="confirmPassword" class="form-label-modern">
+                    <i class="fas fa-shield-alt me-2"></i>Confirm Password <span class="required">*</span>
+                  </label>
+                  <div class="input-wrapper">
+                    <input type="password" id="confirmPassword" name="confirmPassword"
+                      class="form-control form-input-modern" placeholder="Re-enter password" />
+                    <span class="input-icon"><i class="fas fa-shield-alt"></i></span>
+                    <button type="button" class="toggle-password" data-target="confirmPassword">
+                      <i class="fas fa-eye"></i>
+                    </button>
+                    <span class="validation-icon"></span>
+                  </div>
+                  <div class="feedback-msg" id="confirmPassword-feedback"></div>
+                </div>
+              </div>
+
+              <!-- Course Dropdown -->
+              <div class="col-md-6">
+                <div class="form-group-modern">
+                  <label for="course" class="form-label-modern">
+                    <i class="fas fa-book me-2"></i>Select Course <span class="required">*</span>
+                  </label>
+                  <div class="input-wrapper">
+                    <select id="course" name="course" class="form-control form-input-modern form-select-modern">
+                      <option value="">-- Choose a Course --</option>
+                      <option value="HTML & CSS">HTML &amp; CSS</option>
+                      <option value="JavaScript">JavaScript</option>
+                      <option value="jQuery">jQuery</option>
+                      <option value="Full Stack">Full Stack Web Development</option>
+                      <option value="UI/UX Design">UI/UX Design</option>
+                    </select>
+                    <span class="input-icon"><i class="fas fa-book"></i></span>
+                    <span class="validation-icon"></span>
+                  </div>
+                  <div class="feedback-msg" id="course-feedback"></div>
+                </div>
+              </div>
+
+              <!-- Gender -->
+              <div class="col-md-6">
+                <div class="form-group-modern">
+                  <label class="form-label-modern">
+                    <i class="fas fa-venus-mars me-2"></i>Gender <span class="required">*</span>
+                  </label>
+                  <div class="gender-options d-flex gap-3 mt-2">
+                    <label class="gender-label">
+                      <input type="radio" name="gender" value="Male" />
+                      <span class="gender-btn"><i class="fas fa-mars me-2"></i>Male</span>
+                    </label>
+                    <label class="gender-label">
+                      <input type="radio" name="gender" value="Female" />
+                      <span class="gender-btn"><i class="fas fa-venus me-2"></i>Female</span>
+                    </label>
+                    <label class="gender-label">
+                      <input type="radio" name="gender" value="Other" />
+                      <span class="gender-btn"><i class="fas fa-genderless me-2"></i>Other</span>
+                    </label>
+                  </div>
+                  <div class="feedback-msg" id="gender-feedback"></div>
+                </div>
+              </div>
+
+              <!-- Profile Picture (optional) already handled above -->
+
+              <!-- Submit Button -->
+              <div class="col-12 mt-3">
+                <button type="submit" class="btn btn-submit-form ripple-btn w-100" id="submitBtn">
+                  <span class="btn-text"><i class="fas fa-paper-plane me-2"></i>Register Now</span>
+                  <span class="btn-spinner d-none">
+                    <i class="fas fa-spinner fa-spin me-2"></i>Processing...
+                  </span>
+                </button>
+              </div>
+
+            </div>
+          </form>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     SUCCESS POPUP MODAL
+     ============================================================ -->
+<div id="successOverlay" class="success-overlay" style="display:none;">
+  <div class="success-popup glass-card">
+    <div class="success-anim">
+      <div class="success-circle">
+        <i class="fas fa-check success-check"></i>
+      </div>
+    </div>
+    <h3 class="success-title">Registration Successful!</h3>
+    <p class="success-msg">
+      Welcome aboard, <strong id="successName"></strong>! 🎉<br />
+      You've successfully enrolled in <strong id="successCourse"></strong>.
+    </p>
+    <div class="success-details" id="successDetails"></div>
+    <button class="btn btn-success-close ripple-btn" id="closeSuccessPopup">
+      <i class="fas fa-arrow-right me-2"></i>View My Records
+    </button>
+  </div>
+</div>
+
+<!-- ============================================================
+     STUDENT RECORDS SECTION
+     ============================================================ -->
+<section id="records" class="records-section reveal-section">
+  <div class="container">
+    <!-- Section Header -->
+    <div class="section-header text-center">
+      <span class="section-badge"><i class="fas fa-user-graduate me-2"></i>Student Records</span>
+      <h2 class="section-title">Enrolled <span class="gradient-text">Students</span></h2>
+      <p class="section-sub">Manage, search, and track all registered students in real time</p>
+    </div>
+
+    <!-- Table Controls -->
+    <div class="table-controls glass-card mt-4">
+      <div class="row align-items-center g-3">
+        <div class="col-md-5">
+          <div class="search-wrapper">
+            <i class="fas fa-search search-icon-inner"></i>
+            <input type="text" id="searchInput" class="form-control search-input"
+              placeholder="Search by name, email, or course..." />
+            <button class="btn btn-clear-search" id="clearSearch" title="Clear search" style="display:none;">
+              <i class="fas fa-times"></i>
+            </button>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <select id="filterCourse" class="form-control form-select-modern search-input">
+            <option value="">All Courses</option>
+            <option value="HTML & CSS">HTML &amp; CSS</option>
+            <option value="JavaScript">JavaScript</option>
+            <option value="jQuery">jQuery</option>
+            <option value="Full Stack">Full Stack</option>
+            <option value="UI/UX Design">UI/UX Design</option>
+          </select>
+        </div>
+        <div class="col-md-4 d-flex align-items-center gap-2 justify-content-md-end">
+          <div class="student-counter-badge">
+            <i class="fas fa-users me-2"></i>
+            Total: <strong id="studentCount">0</strong>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Records Table -->
+    <div class="table-wrapper glass-card mt-3" id="tableWrapper">
+      <div class="table-responsive">
+        <table class="table modern-table" id="studentsTable">
+          <thead>
+            <tr>
+              <th><i class="fas fa-image me-1"></i>Photo</th>
+              <th><i class="fas fa-user me-1"></i>Name</th>
+              <th><i class="fas fa-envelope me-1"></i>Email</th>
+              <th><i class="fas fa-phone me-1"></i>Phone</th>
+              <th><i class="fas fa-book me-1"></i>Course</th>
+              <th><i class="fas fa-venus-mars me-1"></i>Gender</th>
+              <th><i class="fas fa-calendar me-1"></i>Registered</th>
+              <th><i class="fas fa-cog me-1"></i>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="studentsTableBody">
+            <!-- Rows injected dynamically -->
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Empty State -->
+      <div id="emptyState" class="empty-state">
+        <div class="empty-icon"><i class="fas fa-user-graduate"></i></div>
+        <h5>No Students Yet</h5>
+        <p>Register your first student using the form above!</p>
+        <a href="#registration" class="btn btn-enroll">
+          <i class="fas fa-plus me-2"></i>Add Student
+        </a>
+      </div>
+
+      <!-- No Search Results -->
+      <div id="noResults" class="empty-state" style="display:none;">
+        <div class="empty-icon"><i class="fas fa-search"></i></div>
+        <h5>No Results Found</h5>
+        <p>Try adjusting your search query or filter.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============================================================
+     EDIT STUDENT MODAL
+     ============================================================ -->
+<div id="editModalOverlay" class="success-overlay" style="display:none;">
+  <div class="success-popup glass-card edit-modal" style="max-width:600px;width:95%;">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+      <h4 class="m-0"><i class="fas fa-edit me-2"></i>Edit Student</h4>
+      <button class="btn btn-close-modal" id="closeEditModal"><i class="fas fa-times"></i></button>
+    </div>
+    <form id="editForm">
+      <input type="hidden" id="editIndex" />
+      <div class="row g-3">
+        <div class="col-md-6">
+          <label class="form-label-modern"><i class="fas fa-user me-2"></i>Full Name</label>
+          <input type="text" id="editName" class="form-control form-input-modern" />
+        </div>
+        <div class="col-md-6">
+          <label class="form-label-modern"><i class="fas fa-envelope me-2"></i>Email</label>
+          <input type="email" id="editEmail" class="form-control form-input-modern" />
+        </div>
+        <div class="col-md-6">
+          <label class="form-label-modern"><i class="fas fa-phone me-2"></i>Phone</label>
+          <input type="tel" id="editPhone" class="form-control form-input-modern" />
+        </div>
+        <div class="col-md-6">
+          <label class="form-label-modern"><i class="fas fa-book me-2"></i>Course</label>
+          <select id="editCourse" class="form-control form-input-modern form-select-modern">
+            <option value="HTML & CSS">HTML &amp; CSS</option>
+            <option value="JavaScript">JavaScript</option>
+            <option value="jQuery">jQuery</option>
+            <option value="Full Stack">Full Stack Web Development</option>
+            <option value="UI/UX Design">UI/UX Design</option>
+          </select>
+        </div>
+        <div class="col-12 mt-2">
+          <button type="submit" class="btn btn-submit-form ripple-btn w-100">
+            <i class="fas fa-save me-2"></i>Save Changes
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+
+<!-- ============================================================
+     FOOTER
+     ============================================================ -->
+<footer class="main-footer">
+  <div class="footer-shapes">
+    <div class="footer-shape-1"></div>
+    <div class="footer-shape-2"></div>
+  </div>
+  <div class="container">
+    <div class="row g-5">
+
+      <!-- Brand Col -->
+      <div class="col-lg-4 col-md-6">
+        <div class="footer-brand">
+          <a href="#home" class="footer-logo">
+            <i class="fas fa-graduation-cap me-2"></i>Edu<span>Portal</span>
+          </a>
+          <p class="footer-desc">
+            The most modern student registration and learning management system,
+            designed to empower the next generation of developers.
+          </p>
+          <div class="social-links">
+            <a href="#" class="social-link" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="social-link" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="social-link" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="social-link" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#" class="social-link" aria-label="GitHub"><i class="fab fa-github"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quick Links -->
+      <div class="col-lg-2 col-md-6">
+        <div class="footer-col">
+          <h5 class="footer-col-title">Quick Links</h5>
+          <ul class="footer-links">
+            <li><a href="#home"><i class="fas fa-chevron-right me-2"></i>Home</a></li>
+            <li><a href="#courses"><i class="fas fa-chevron-right me-2"></i>Courses</a></li>
+            <li><a href="#registration"><i class="fas fa-chevron-right me-2"></i>Register</a></li>
+            <li><a href="#records"><i class="fas fa-chevron-right me-2"></i>Students</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Courses Links -->
+      <div class="col-lg-3 col-md-6">
+        <div class="footer-col">
+          <h5 class="footer-col-title">Our Courses</h5>
+          <ul class="footer-links">
+            <li><a href="#registration"><i class="fas fa-code me-2"></i>HTML &amp; CSS</a></li>
+            <li><a href="#registration"><i class="fab fa-js me-2"></i>JavaScript</a></li>
+            <li><a href="#registration"><i class="fas fa-layer-group me-2"></i>jQuery</a></li>
+            <li><a href="#registration"><i class="fas fa-globe me-2"></i>Full Stack</a></li>
+            <li><a href="#registration"><i class="fas fa-paint-brush me-2"></i>UI/UX Design</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Contact Info -->
+      <div class="col-lg-3 col-md-6">
+        <div class="footer-col">
+          <h5 class="footer-col-title">Contact Us</h5>
+          <ul class="footer-contact">
+            <li><i class="fas fa-map-marker-alt me-3"></i>123 Knowledge Street, Lahore, PK</li>
+            <li><i class="fas fa-phone me-3"></i>+92 300 1234567</li>
+            <li><i class="fas fa-envelope me-3"></i>info@eduportal.pk</li>
+            <li><i class="fas fa-clock me-3"></i>Mon – Fri: 9AM – 6PM</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Footer Bottom -->
+    <div class="footer-bottom">
+      <div class="row align-items-center">
+        <div class="col-md-6 text-center text-md-start">
+          <p class="footer-copy">
+            &copy; <span id="footerYear"></span> EduPortal. All rights reserved.
+            Crafted with <i class="fas fa-heart text-danger mx-1"></i> for learners.
+          </p>
+        </div>
+        <div class="col-md-6 text-center text-md-end">
+          <p class="footer-tech">
+            Built with <span>HTML5</span> · <span>CSS3</span> · <span>Bootstrap 5</span> · <span>jQuery</span>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ============================================================
+     BACK TO TOP BUTTON
+     ============================================================ -->
+<button id="backToTop" class="back-to-top" aria-label="Back to top">
+  <i class="fas fa-chevron-up"></i>
+</button>
+
+<!-- ============================================================
+     SCRIPTS — jQuery, Bootstrap, Custom
+     ============================================================ -->
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+<script src="script.js"></script>
+
+</body>
+</html>
