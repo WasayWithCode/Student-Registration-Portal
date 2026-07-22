@@ -59,15 +59,8 @@ https://github.com/WasayWithCode/Student-Registration-Portal
 Student-Registration-Portal
 │
 ├── index.html
-│
-├── css
-│   └── style.css
-│
-├── js
-│   └── script.js
-│
-├── images
-│
+│ style.css
+│ script.js
 └── README.md
 ```
 
